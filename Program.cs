@@ -27,7 +27,14 @@ bool exibirMenu = true;
 // Realiza o loop do menu
 while (exibirMenu)
 {
-    Console.Clear();
+    try
+    {
+        Console.Clear();
+    }
+    catch (IOException)
+    {
+        Console.WriteLine("Não foi possível limpar o console.");
+    }
     Console.WriteLine("Digite a sua opção:");
     Console.WriteLine("1 - Cadastrar veículo");
     Console.WriteLine("2 - Remover veículo");
@@ -51,6 +58,7 @@ while (exibirMenu)
         case "4":
             exibirMenu = false;
             Console.WriteLine("Encerrando o programa...");
+            Environment.Exit(0);
             break;
 
         default:
@@ -59,7 +67,7 @@ while (exibirMenu)
     }
 
     Console.WriteLine("Pressione uma tecla para continuar...");
-    Console.ReadKey();
+    Console.ReadLine();
 }
 
 Console.WriteLine("O programa se encerrou.");
