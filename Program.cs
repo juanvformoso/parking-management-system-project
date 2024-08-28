@@ -59,7 +59,6 @@ while (exibirMenu)
         case "4":
             exibirMenu = false;
             Console.WriteLine("Encerrando o programa...");
-            Environment.Exit(0);
             break;
 
         default:

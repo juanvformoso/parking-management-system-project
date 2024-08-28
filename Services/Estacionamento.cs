@@ -36,7 +36,7 @@ namespace ParkingSystem.Services
             Console.WriteLine("Digite a placa do veículo para remover:");
             string? placa = Console.ReadLine()?.ToUpper();
 
-            var veiculo = veiculos.FirstOrDefault(v => v.Placa == placa);
+            var veiculo = veiculos.Find(v => v.Placa == placa);
             
             if (veiculo != null)
             {
