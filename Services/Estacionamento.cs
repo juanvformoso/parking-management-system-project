@@ -66,7 +66,7 @@ namespace ParkingSystem.Services
                 Console.WriteLine("Os veículos estacionados são:");
                 foreach (var veiculo in veiculos)
                 {
-                    Console.WriteLine(veiculo);
+                    Console.WriteLine(veiculo.Placa);
                 }
             }
             else
