@@ -2,21 +2,21 @@ namespace ParkingSystem.Models
 {
     public class Estacionamento
     {
-        private decimal precoInicial = 0;
-        private decimal precoPorHora = 0;
-        private List<string> veiculos = new List<string>();
+        private readonly decimal precoInicial;
+        private readonly decimal precoPorHora;
+        private readonly List<string> veiculos;
 
         public Estacionamento(decimal precoInicial, decimal precoPorHora)
         {
             this.precoInicial = precoInicial;
             this.precoPorHora = precoPorHora;
+            this.veiculos = new List<string>();
         }
 
         public void AdicionarVeiculo()
         {
             // TODO: Pedir para o usuário digitar uma placa (ReadLine) e adicionar na lista "veiculos"
             Console.WriteLine("Digite a placa do veículo para estacionar:");
-
         }
 
         public void RemoverVeiculo()
