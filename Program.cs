@@ -3,20 +3,25 @@
 // Habilita o encoding UTF8 para exibir acentuação
 Console.OutputEncoding = System.Text.Encoding.UTF8;
 
-decimal precoInicial = 0;
-decimal precoPorHora = 0;
+Console.WriteLine("Seja bem vindo ao sistema de estacionamento!\n");
 
-Console.WriteLine("Seja bem vindo ao sistema de estacionamento!\n" + 
-                  "Digite o preço inicial:");
-precoInicial = Convert.ToDecimal(Console.ReadLine());
+Console.WriteLine("Digite o preço inicial:");
+if (!decimal.TryParse(Console.ReadLine(), out decimal precoInicial))
+{
+    Console.WriteLine("Preço inicial inválido. O programa será encerrado");
+    return;
+}
 
 Console.WriteLine("Agora digite o preço por hora:");
-precoPorHora = Convert.ToDecimal(Console.ReadLine());
+if (!decimal.TryParse(Console.ReadLine(), out decimal precoPorHora))
+{
+    Console.WriteLine("Preço por hora inválido. O programa será encerrado");
+    return;
+}
 
 // Instancia a classe estacionamento, já com os valores obtidos anteriormente
 Estacionamento estacionamento = new Estacionamento(precoInicial, precoPorHora);
 
-string opcao = string.Empty;
 bool exibirMenu = true;
 
 // Realiza o loop do menu
@@ -45,15 +50,16 @@ while (exibirMenu)
 
         case "4":
             exibirMenu = false;
+            Console.WriteLine("Encerrando o programa...");
             break;
 
         default:
-            Console.WriteLine("Opção inváçida");
+            Console.WriteLine("Opção inválida. Tente novamente.");
             break;
     }
 
-    Console.WriteLine("Pressione uma tecla para continuar");
-    Console.ReadLine();
+    Console.WriteLine("Pressione uma tecla para continuar...");
+    Console.ReadKey();
 }
 
-Console.WriteLine("O programa se encerrou");
+Console.WriteLine("O programa se encerrou.");
