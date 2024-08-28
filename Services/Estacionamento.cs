@@ -1,16 +1,18 @@
-namespace ParkingSystem.Models
+using ParkingSystem.Models;
+
+namespace ParkingSystem.Services
 {
     public class Estacionamento
     {
         private readonly decimal precoInicial;
         private readonly decimal precoPorHora;
-        private readonly List<string> veiculos;
+        private readonly List<Veiculo> veiculos;
 
         public Estacionamento(decimal precoInicial, decimal precoPorHora)
         {
             this.precoInicial = precoInicial;
             this.precoPorHora = precoPorHora;
-            this.veiculos = new List<string>();
+            this.veiculos = new List<Veiculo>();
         }
 
         public void AdicionarVeiculo()
@@ -20,7 +22,7 @@ namespace ParkingSystem.Models
 
             if (!string.IsNullOrWhiteSpace(placa))
             {
-                veiculos.Add(placa);
+                veiculos.Add(new Veiculo(placa));
                 Console.WriteLine($"Veículo {placa} adicionado com sucesso!");
             }
             else
@@ -34,14 +36,15 @@ namespace ParkingSystem.Models
             Console.WriteLine("Digite a placa do veículo para remover:");
             string? placa = Console.ReadLine()?.ToUpper();
 
-            // Verifica se o veículo existe
-            if (veiculos.Any(x => x == placa))
+            var veiculo = veiculos.FirstOrDefault(v => v.Placa == placa);
+            
+            if (veiculo != null)
             {
                 Console.WriteLine("Digite a quantidade de horas que o veículo permaneceu estacionado:");
                 if (int.TryParse(Console.ReadLine(), out int horas))
                 {
                     decimal valorTotal = precoInicial + precoPorHora * horas;
-                    veiculos.Remove(placa!);
+                    veiculos.Remove(veiculo);
                     Console.WriteLine($"O veículo {placa} foi removido e o preço total é de R$ {valorTotal:F2}");
                 }
                 else
