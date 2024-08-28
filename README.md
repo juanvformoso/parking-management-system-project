@@ -55,3 +55,6 @@ classDiagram
     dotnet run
 
 3. Siga as instruções exibidas no terminal para interagir com o sistema.
+
+## Fonte
+[Repositório original do projeto](https://github.com/digitalinnovationone/trilha-net-fundamentos-desafio)
