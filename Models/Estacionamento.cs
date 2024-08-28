@@ -15,8 +15,18 @@ namespace ParkingSystem.Models
 
         public void AdicionarVeiculo()
         {
-            // TODO: Pedir para o usuário digitar uma placa (ReadLine) e adicionar na lista "veiculos"
             Console.WriteLine("Digite a placa do veículo para estacionar:");
+            string placa = Console.ReadLine()?.ToUpper();
+
+            if (!string.IsNullOrWhiteSpace(placa))
+            {
+                veiculos.Add(placa);
+                Console.WriteLine($"Veículo {placa} adicionado com sucesso!");
+            }
+            else
+            {
+                Console.WriteLine("Placa inválida. Tente novamente.");
+            }
         }
 
         public void RemoverVeiculo()
