@@ -16,7 +16,7 @@ namespace ParkingSystem.Models
         public void AdicionarVeiculo()
         {
             Console.WriteLine("Digite a placa do veículo para estacionar:");
-            string placa = Console.ReadLine()?.ToUpper();
+            string? placa = Console.ReadLine()?.ToUpper();
 
             if (!string.IsNullOrWhiteSpace(placa))
             {
@@ -32,7 +32,7 @@ namespace ParkingSystem.Models
         public void RemoverVeiculo()
         {
             Console.WriteLine("Digite a placa do veículo para remover:");
-            string placa = Console.ReadLine()?.ToUpper();
+            string? placa = Console.ReadLine()?.ToUpper();
 
             // Verifica se o veículo existe
             if (veiculos.Any(x => x == placa))
@@ -41,7 +41,7 @@ namespace ParkingSystem.Models
                 if (int.TryParse(Console.ReadLine(), out int horas))
                 {
                     decimal valorTotal = precoInicial + precoPorHora * horas;
-                    veiculos.Remove(placa);
+                    veiculos.Remove(placa!);
                     Console.WriteLine($"O veículo {placa} foi removido e o preço total é de R$ {valorTotal:F2}");
                 }
                 else
